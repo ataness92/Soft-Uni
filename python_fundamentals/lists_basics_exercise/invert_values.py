@@ -7,3 +7,6 @@ for i in string_numbers:
     new_string.append(int(i)*(-1))
 
 print(new_string)
+
+#print([-int(number) for number in input().split()])
+
