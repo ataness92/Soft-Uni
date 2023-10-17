@@ -1,17 +1,18 @@
-def number_classification(number: int):
-    positive_numbers, negative_numbers = []
-    even_numbers, odd_numbers = []
-    if number %2 == 0:
-        even_numbers.append(number)
-    else:
-        odd_numbers.append(number)
-    if number >= 0:
-        positive_numbers.append(number)
-    else:
-        negative_numbers.append(number)
+def number_classification(numbers: list):
+    positive_numbers, negative_numbers = [],[]
+    even_numbers, odd_numbers = [],[]
+    for number in numbers:
+        if number %2 == 0:
+            even_numbers.append(str(number))
+        else:
+            odd_numbers.append(str(number))
+        if number >= 0:
+            positive_numbers.append(str(number))
+        else:
+            negative_numbers.append(str(number))
 
-    return f"positive_numbers, negative_numbers, even_numbers, odd_numbers"
-my_numbers = list(map(int, (input().split(', '))))
-print(my_numbers)
-print([number_classification(x) for x in my_numbers])
+    return f"Positive: {', '.join(positive_numbers)}\nNegative: {', '.join(negative_numbers)}\nEven: {', '.join(even_numbers)}\nOdd: {', '.join(odd_numbers)}"
 
+
+my_numbers = [int(x) for x in input().split(', ')]
+print(number_classification(my_numbers))
