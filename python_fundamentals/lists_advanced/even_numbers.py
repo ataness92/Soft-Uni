@@ -1,0 +1,1 @@
+print([index for index, x in enumerate(list(map(int, input().split(', ')))) if x%2==0])

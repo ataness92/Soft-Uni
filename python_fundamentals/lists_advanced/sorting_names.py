@@ -10,4 +10,4 @@ print(list(sorted(list_of_names, key= lambda x: (-len(x), x))))
 #    if len(first_sort[x]) == len(first_sort[x+1]):
 #        first_sort[x], first_sort[x+1] = sorted([first_sort[x], first_sort[x+1]])
 
-#print(first_sort)
+#print(fpirst_sort)
