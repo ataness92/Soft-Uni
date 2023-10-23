@@ -1,7 +1,8 @@
 
 class Inventory:
 
-    items = [] 
+    items = []
+    __capacity = 0
     def __init__(self, __capacity: int):
         self.__capacity = __capacity
         Inventory.__capacity = __capacity
@@ -23,8 +24,7 @@ class Inventory:
         
 
 
-inventory = Inventory(2)
-inventory.add_item("potion")
+inventory = Inventory(1)
 inventory.add_item("sword")
 print(inventory.add_item("bottle"))
 print(inventory.get_capacity())
