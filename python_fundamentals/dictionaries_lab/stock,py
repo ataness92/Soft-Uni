@@ -1,0 +1,14 @@
+in_stock = input().split()
+
+needed_products = input().split() 
+dict_stock = {}
+for i in range(0, len(in_stock), 2):
+    key = in_stock[i]
+    value = in_stock[i+1]
+    dict_stock[key] = int(value)
+
+for product in needed_products:
+    if product in dict_stock:
+        print(f'We have {dict_stock[product]} of {product} left')
+    else:
+        print(f"Sorry, we don't have {product}")
