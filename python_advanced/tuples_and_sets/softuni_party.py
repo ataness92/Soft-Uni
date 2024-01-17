@@ -18,5 +18,7 @@ while True:
         regular.remove(code)
 
 print(len(vip | regular))
-print('\n'.join(vip))
-print('\n'.join(regular))
+if vip:
+	print('\n'.join(sorted(vip)))
+if regular:      
+	print('\n'.join(sorted(regular)))
