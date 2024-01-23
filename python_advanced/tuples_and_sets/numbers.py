@@ -28,7 +28,7 @@ functions = {
     "Add Second": lambda x: [second_set.add(int(el)) for el in x],
     "Remove First": lambda x: [first_set.discard(int(el)) for el in x],
     "Remove Second": lambda x: [second_set.discard(int(el)) for el in x],
-    "Check Subset": lambda x: print(first_set.issubset(second_set) or second_set.ssubset(first_set)),
+    "Check Subset": lambda x: print(first_set.issubset(second_set) or second_set.issubset(first_set)),
 }
 
 for _ in range(int(input())):
