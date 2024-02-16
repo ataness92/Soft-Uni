@@ -1,5 +1,7 @@
 from collections import deque
 
+import sys
+print(sys.version)
 worms = [int(x) for x in input().split()]
 holes = deque(int(x) for x in input().split())
 
