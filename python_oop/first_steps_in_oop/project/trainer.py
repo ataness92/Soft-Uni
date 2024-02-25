@@ -1,4 +1,4 @@
-from python_oop.pokemon import Pokemon
+from python_oop.first_steps_in_oop.project.pokemon import Pokemon
 
 
 class Trainer:
@@ -8,7 +8,7 @@ class Trainer:
         self.pokemon = []
 
 
-    def add_pokemon(self, pokemon: Pokemon):
+    def add_pokemon(self, pokemon: Pokemon): 
         if pokemon not in self.pokemon:
             self.pokemon.append(pokemon)
             return f"Caught "+pokemon.pokemon_details()
@@ -26,8 +26,9 @@ class Trainer:
         message = ""
 
         message += f"Pokemon Trainer {self.name}\n"
-        message += f"Pokemon count {len(self.pokemon)}\n"
+        message += f"Pokemon count {len(self.pokemon)}"
         for pokemon in self.pokemon:
+            message += "\n"
             message += f"- {pokemon.name} with {pokemon.health}"
         return message
 
