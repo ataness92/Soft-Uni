@@ -9,6 +9,15 @@ class Computer(ABC):
         self.ram = None
         self.price = 0
 
+    @property
+    @abstractmethod
+    def available_processors(self):
+        ...
+        
+    @property
+    @abstractmethod
+    def max_ram(self):
+        ...
     
     @property
     def manufacturer(self):
