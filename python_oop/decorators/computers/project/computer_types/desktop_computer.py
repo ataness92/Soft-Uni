@@ -3,6 +3,10 @@ from project.computer_types.computer import Computer
 class DesktopComputer(Computer):
 
     @property
+    def type(self) -> str:
+        return "desktop computer"
+
+    @property
     def available_processors(self):
         return {
             "AMD Ryzen 7 5700G": 500,

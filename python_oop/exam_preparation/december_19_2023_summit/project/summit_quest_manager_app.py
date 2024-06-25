@@ -9,22 +9,29 @@ from project.peaks.summit_peak import SummitPeak
 
 
 class SummitQuestManagerApp:
-    VALID_CLIMBERS = ["ArcticClimber", "SummitClimber"]
+    VALID_CLIMBERS = {
+        "ArcticClimber": ArcticClimber,
+        "SummitClimber": SummitClimber
+    }
 
     def __init__(self):
         self.climbers: List[BaseClimber] = []
         self.peaks: List[BasePeak] = []
 
     def register_climber(self,climber_type: str, climber_name: str):
-        if climber_type == "ArcticClimber":
-            climber = ArcticClimber(climber_name)
-        elif climber_type == "SummitClimber":
-            climber = SummitClimber(climber_name)
-        else:
+        try:
+            climber = self.VALID_CLIMBERS[climber_type](climber_name)
+        except KeyError:
             return f"{climber_type} doesn't exist in our register."
+        #if climber_type == "ArcticClimber":
+        #    climber = ArcticClimber(climber_name)
+        #elif climber_type == "SummitClimber":
+        #    climber = SummitClimber(climber_name)
+        #else:
+        #    return f"{climber_type} doesn't exist in our register."
 
         try:
-            find_climber = next(filter(lambda c: c.name == climber_name, self.climbers))
+            next(filter(lambda c: c.name == climber_name, self.climbers))
             return f"{climber_name} has been already registered."
         except StopIteration:
             self.climbers.append(climber)
@@ -68,6 +75,7 @@ class SummitQuestManagerApp:
         elif not climber.is_prepared:
             return f"{climber_name} will need to be better prepared next time."
         else:
+            climber.rest()
             return f"{climber_name} needs more strength to climb {peak_name} and is therefore taking some rest."
 
 
@@ -75,7 +83,7 @@ class SummitQuestManagerApp:
         for c in self.climbers:
             c.conquered_peaks = sorted(c.conquered_peaks)
         first_result = [c for c in self.climbers if c.conquered_peaks]
-        result = sorted(first_result, key = lambda c: (-len(c.conquered_peaks)))
+        result = sorted(first_result, key = lambda c: (-len(c.conquered_peaks), c.name))
         result_str = '\n'.join([str(c) for c in result])
         return f"Total climbed peaks: {len(self.peaks)}\n" \
                "**Climber's statistics:**\n" \
